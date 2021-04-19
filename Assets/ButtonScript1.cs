@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
-    public void LoadScene (string level)
-    {
-        SceneManager.LoadScene(level);
-    }
+    
 
+    // this method is called every time the music slider is moved
     public void MusicSliderChanged()
     {
         float value = GetComponent<Slider>().value;   
@@ -24,4 +23,11 @@ public class ButtonScript : MonoBehaviour
         // adjust the music volume to the new level
         AudioManager.instance.SetVolume("music", value );
     }
+
+    // Load a scene. The name is specified in the editor
+    public void LoadScene(string level)
+    { 
+         SceneManager.LoadScene(level);
+    }
+
 }
