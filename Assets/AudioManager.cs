@@ -8,6 +8,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
+	public AudioMixer audioMixer;
+
 	public static AudioManager instance;
 
 	public AudioMixerGroup mixerGroup;
@@ -15,6 +17,10 @@ public class AudioManager : MonoBehaviour
 	// this is the list of sounds we have defined in the editor
 	public Sound[] soundList;
 
+	public void SetVolume(float volume)
+	{
+		audioMixer.SetFloat("volume", volume);
+	}
 	void Awake()
 	{
 		if (instance == null)

@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
  using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
-public class TriggerSound : MonoBehaviour, ISelectHandler , IPointerEnterHandler
+public class TriggerSound : MonoBehaviour, IPointerEnterHandler
 {
+
+    public AudioMixer audioMixer;
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +29,9 @@ public class TriggerSound : MonoBehaviour, ISelectHandler , IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //print("entered");
-        //AudioManager.instance.Play("beep1");
+        print("entered");
+        AudioManager.instance.Play("menu hover");
     }
 
-    public void OnSelect( BaseEventData eventData )
-    {
-        print("selected");
-        AudioManager.instance.Play("menu button");
-    }
+ 
 }
